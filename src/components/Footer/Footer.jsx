@@ -39,11 +39,16 @@ const Footer = () => {
         </div>
         <div></div>
       </div>
-      <div className="border-t py-2 border-t-gray-400 flex items-center justify-center">
-        <small className="text-gray-500 flex items-center gap-2">
-          &copy; Mauricio Robinson (MarsDev). Sonny Sangha Master 🙏🏻. Mukiiii{" "}
-          <HeartIcon className="text-red-600 w-6 h-6" />
-        </small>
+      <div className="border-t py-2 border-t-gray-400 flex items-center justify-center px-8">
+        <p className="text-gray-500 flex flex-col items-center gap-2">
+          <small className="flex-grow">
+            &copy; Mauricio Robinson (MarsDev).
+          </small>
+          <small className="flex-grow flex">
+            Mukiiii <HeartIcon className="text-red-600 w-6 h-6" />
+          </small>
+          <small className="flex-grow">Sonny Sangha Master 🙏🏻</small>
+        </p>
       </div>
     </footer>
   );
