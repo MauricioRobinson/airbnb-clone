@@ -1,8 +1,9 @@
 import Banner from "@components/Banner/Banner";
+import SmallCard from "@components/Card/SmallCard";
 import Header from "@components/Header/Header";
 import Head from "next/head";
 
-export default function Home() {
+export default function Home({ exploreData }) {
   return (
     <div>
       <Head>
@@ -17,12 +18,37 @@ export default function Home() {
         />
       </Head>
 
-      <main>
-        {/* Header navbar */}
-        <Header />
-        <Banner />
+      <Header />
+      <Banner />
+
+      <main className="max-w-5xl mx-auto px-8 sm:px-16">
+        <section className="pt-6">
+          <h2 className="text-3xl font-semibold pb-5">Explore Nearby</h2>
+        </section>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {exploreData?.map(({ img, distance, location }) => (
+            <SmallCard
+              key={img}
+              img={img}
+              distance={distance}
+              location={location}
+            />
+          ))}
+        </div>
       </main>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch("https://www.jsonkeeper.com/b/4G1G");
+  const exploreData = await res.json();
+
+  return {
+    props: {
+      exploreData,
+    },
+  };
 }
 
