@@ -1,6 +1,11 @@
 import Image from "next/image";
 import React from "react";
-import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
+import {
+  MagnifyingGlassCircleIcon,
+  GlobeAltIcon,
+  UsersIcon,
+  Bars3Icon,
+} from "@heroicons/react/24/solid";
 
 const Header = () => {
   return (
@@ -14,7 +19,7 @@ const Header = () => {
         />
       </div>
       <div className="my-auto">
-        <div className="border-2 md:border-red-400 rounded-full py-2 flex items-center md:shadow-sm">
+        <div className="md:border-2 md:border-red-400 rounded-full py-2 flex items-center md:shadow-sm">
           <input
             type="search"
             placeholder="Start your search"
@@ -23,7 +28,15 @@ const Header = () => {
           <MagnifyingGlassCircleIcon className="w-8 h-8 text-red-400 p-1 cursor-pointer hidden md:inline-flex md:mx-2" />
         </div>
       </div>
-      <div>{/* Navigation */}</div>
+      <div className="flex items-center space-x-4 justify-end text-gray-500">
+        <p className="hidden md:inline cursor-pointer">Become a host</p>
+        <GlobeAltIcon className="h-6 w-6" />
+
+        <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
+          <Bars3Icon className="w-6 h-6" />
+          <UsersIcon className="w-6 h-6" />
+        </div>
+      </div>
     </header>
   );
 };
