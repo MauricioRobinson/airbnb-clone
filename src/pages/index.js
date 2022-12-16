@@ -1,4 +1,5 @@
 import Banner from "@components/Banner/Banner";
+import LargeCard from "@components/Card/LargeCard";
 import MediumCard from "@components/Card/MediumCard";
 import SmallCard from "@components/Card/SmallCard";
 import Header from "@components/Header/Header";
@@ -51,6 +52,13 @@ export default function Home({ exploreData, cardsData }) {
             ))}
           </div>
         </section>
+
+        <LargeCard
+          img={"https://links.papareact.com/4cj"}
+          title={"The Greatest Outdoors"}
+          description={"Whishlists curated by Airbnb"}
+          buttonText={"Get Inspired"}
+        />
       </main>
     </div>
   );
