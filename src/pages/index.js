@@ -21,7 +21,6 @@ export default function Home({ exploreData, cardsData }) {
         />
       </Head>
 
-      <Header />
       <Banner />
 
       <main className="max-w-5xl mx-auto px-8 sm:px-16">
@@ -61,8 +60,6 @@ export default function Home({ exploreData, cardsData }) {
           buttonText={"Get Inspired"}
         />
       </main>
-
-      <Footer />
     </div>
   );
 }
@@ -81,4 +78,3 @@ export async function getStaticProps() {
     },
   };
 }
-

@@ -9,12 +9,15 @@ import {
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
+import { useRouter } from "next/router";
+import { format } from "date-fns";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [numberOfGuests, setNumberOfGuests] = useState(1);
+  const router = useRouter();
 
   const handleSearch = (e) => {
     const { name, value } = e.target;
@@ -27,6 +30,10 @@ const Header = () => {
     endDate: endDate,
     key: "selection",
   };
+
+  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
+  const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
+  const range = `${formattedStartDate} - ${formattedEndDate}`;
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
@@ -43,9 +50,24 @@ const Header = () => {
     setSearchInput("");
   };
 
+  const search = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        numberOfGuests,
+      },
+    });
+    setSearchInput("");
+  };
+
   return (
     <header className="w-full shadow-md sticky top-0 px-4 grid grid-cols-3 z-50 md:px-4 md:py-2 bg-white">
-      <div className="relative w-24 h-20 cursor-pointer my-auto">
+      <div
+        onClick={() => router.push("/")}
+        className="relative w-24 h-20 cursor-pointer my-auto">
         <Image
           src={"https://links.papareact.com/qd3"}
           alt="Logo"
@@ -59,7 +81,7 @@ const Header = () => {
             type="text"
             value={searchInput}
             onChange={handleSearch}
-            placeholder="Start your search"
+            placeholder={"Start your search"}
             className="outline-none pl-5 bg-transparent flex-grow text-gray-600 placeholder-gray-400"
           />
           <MagnifyingGlassCircleIcon className="w-8 h-8 text-red-400 p-1 cursor-pointer hidden md:inline-flex md:mx-2" />
@@ -67,7 +89,7 @@ const Header = () => {
       </div>
       <div className="flex items-center space-x-4 justify-end text-gray-500">
         <p className="hidden md:inline cursor-pointer">Become a host</p>
-        <GlobeAltIcon className="h-6 w-6" />
+        <GlobeAltIcon className="h-6 w-6 hidden md:inline" />
 
         <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
           <Bars3Icon className="w-6 h-6" />
@@ -103,7 +125,11 @@ const Header = () => {
                 className="flex-grow text-gray-500">
                 Cancel
               </button>
-              <button className="flex-grow text-red-400">Search</button>
+              <button
+                onClick={search}
+                className="flex-grow text-red-400">
+                Search
+              </button>
             </div>
           </div>
         </div>
