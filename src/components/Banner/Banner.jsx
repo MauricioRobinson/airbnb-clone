@@ -5,10 +5,11 @@ const Banner = () => {
   return (
     <div className="relative h-[300px] sm:h-[400px] md:h-[500px] lg:[600px] xl:h-[700px] 2xl:h-[900px]">
       <Image
-        src={"/img/banner.webp"}
+        src={"https://links.papareact.com/0fm"}
         alt="Banner image"
         layout="fill"
         objectFit="cover"
+        priority={true}
       />
 
       <div className="absolute top-1/2 w-full text-center">
