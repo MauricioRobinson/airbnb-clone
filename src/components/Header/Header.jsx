@@ -9,7 +9,7 @@ import {
 
 const Header = () => {
   return (
-    <header className="w-full shadow-md sticky top-0 px-4 grid grid-cols-3 z-50 md:px-4 md:py-2">
+    <header className="w-full shadow-md sticky top-0 px-4 grid grid-cols-3 z-50 md:px-4 md:py-2 bg-white">
       <div className="relative w-24 h-20 cursor-pointer my-auto">
         <Image
           src={"/img/airbnb-logo.png"}
