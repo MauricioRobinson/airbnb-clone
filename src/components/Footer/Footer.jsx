@@ -41,7 +41,8 @@ const Footer = () => {
       </div>
       <div className="border-t py-2 border-t-gray-400 flex items-center justify-center">
         <small className="text-gray-500 flex items-center gap-2">
-          Mukiiii <HeartIcon className="text-red-600 w-6 h-6" />
+          &copy; Mauricio Robinson (MarsDev). Sonny Sangha Master 🙏🏻. Mukiiii{" "}
+          <HeartIcon className="text-red-600 w-6 h-6" />
         </small>
       </div>
     </footer>
